@@ -29,7 +29,12 @@ fullMod <- lm(log(price) ~ age + college + br + size)
 stepMod <- stepAIC(fullMod, direction = "both", trace = 1)
 
 summary(stepMod)
-plot(stepMod)
 
-finalMod <- lm(log(price) ~ age + college + br + size)
+# Removing college variable based on stepwise
+
+finalMod <- lm(log(price) ~ age + br + size)
 summary(finalMod)
+
+plot(finalMod)
+
+confint(finalMod)
